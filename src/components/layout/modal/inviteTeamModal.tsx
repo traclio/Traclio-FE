@@ -55,6 +55,19 @@ const HeaderRow = styled.div`
   gap: 12px;
 `;
 
+const IconCircle = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background: #ffffff;
+  border: 1px solid #e7ebee;
+  border-radius: 50%;
+  flex-shrink: 0;
+  padding: 8px;
+  box-sizing: border-box;
+`;
 
 const TitleGroup = styled.div`
   display: flex;
@@ -93,6 +106,7 @@ const Body = styled.div`
   gap: 30px;
   flex: 1;
   min-height: 0;
+  padding-top: 40px;
 `;
 
 const SectionLabel = styled.span`
@@ -277,7 +291,9 @@ export function InviteTeamModal({
           {/* ── Header ── */}
           <Header>
             <HeaderRow>
-              <ModalIcon width={45} height={45} style={{ flexShrink: 0 }} />
+              <IconCircle>
+                <ModalIcon width={24} height={24} />
+              </IconCircle>
               <TitleGroup>
                 <Title>팀원 초대하기</Title>
                 <Subtitle>프로젝트의 팀원을 추가해보세요.</Subtitle>

@@ -43,7 +43,9 @@ const Panel = styled.div`
 const Inner = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  flex: 1;
+  justify-content: space-between;
+  min-height: 0;
 `;
 
 const Header = styled.div`
@@ -195,6 +197,8 @@ const ScheduleList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  max-height: 148px;
+  overflow-y: auto;
 `;
 
 
