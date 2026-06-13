@@ -98,11 +98,13 @@ const HLine = styled.div`
 `;
 
 const Body = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 30px;
   flex: 1;
-  justify-content: center;
+  min-height: 0;
+  padding-top: 40px;
 `;
 
 const FieldGroup = styled.div`
