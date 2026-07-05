@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled from '@emotion/styled';
 import ModalIcon from '@/assets/icons/setting.svg?react';
+import { FieldLabel, LabeledField } from '@/components/common/FieldInput';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -107,48 +108,6 @@ const Body = styled.div`
   padding-top: 40px;
 `;
 
-const FieldGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-`;
-
-const FieldLabel = styled.span`
-  font-family: 'Pretendard', -apple-system, sans-serif;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 1.6;
-  color: #000000;
-`;
-
-const InputBox = styled.div`
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  background: #ffffff;
-  border: 1px solid #aec1cc;
-  border-radius: 8px;
-  padding: 8px 12px;
-  box-sizing: border-box;
-  box-shadow: inset -0.5px -0.5px 1px 0px rgba(58, 61, 66, 0.2);
-`;
-
-const StyledInput = styled.input`
-  width: 100%;
-  border: none;
-  outline: none;
-  background: transparent;
-  font-family: 'Pretendard', -apple-system, sans-serif;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 1.6;
-  color: #1d1d1d;
-
-  &::placeholder {
-    color: #aec1cc;
-  }
-`;
-
 const LogoRow = styled.div`
   display: flex;
   align-items: center;
@@ -213,27 +172,6 @@ const ActionBtn = styled.button<{ hovered: boolean }>`
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
-function FieldInput({
-  placeholder,
-  value,
-  onChange,
-}: {
-  placeholder: string;
-  value: string;
-  onChange: (v: string) => void;
-}) {
-  return (
-    <InputBox>
-      <StyledInput
-        type="text"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        placeholder={placeholder}
-      />
-    </InputBox>
-  );
-}
-
 function ActionButton({ label, onClick }: { label: string; onClick: () => void }) {
   const [hovered, setHovered] = useState(false);
   return (
@@ -277,10 +215,12 @@ export function CreateProjectModal({ onClose, onNext }: CreateProjectModalProps)
 
           {/* ── Body ── */}
           <Body>
-            <FieldGroup>
-              <FieldLabel>프로젝트 이름</FieldLabel>
-              <FieldInput placeholder="이름을 입력하세요" value={name} onChange={setName} />
-            </FieldGroup>
+            <LabeledField
+              label="프로젝트 이름"
+              placeholder="이름을 입력하세요"
+              value={name}
+              onChange={setName}
+            />
 
             <LogoRow>
               <FieldLabel>로고 넣기</FieldLabel>
@@ -297,14 +237,12 @@ export function CreateProjectModal({ onClose, onNext }: CreateProjectModalProps)
               </label>
             </LogoRow>
 
-            <FieldGroup>
-              <FieldLabel>깃허브 링크</FieldLabel>
-              <FieldInput
-                placeholder="링크를 입력하세요"
-                value={githubUrl}
-                onChange={setGithubUrl}
-              />
-            </FieldGroup>
+            <LabeledField
+              label="깃허브 링크"
+              placeholder="링크를 입력하세요"
+              value={githubUrl}
+              onChange={setGithubUrl}
+            />
           </Body>
 
           {/* ── Footer ── */}

@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import ModalIcon from '@/assets/icons/schedule.svg?react';
 import { Calendar } from '@/components/ui/calendar';
 import { Schedule } from '@/components/ui/schedule';
+import { FieldGroup, FieldLabel, LabeledField } from '@/components/common/FieldInput';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -143,48 +144,6 @@ const RightPane = styled.div`
   flex-direction: column;
   gap: 20px;
   flex: 1;
-`;
-
-const FieldGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-`;
-
-const FieldLabel = styled.span`
-  font-family: 'Pretendard', -apple-system, sans-serif;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 1.6;
-  color: #000000;
-`;
-
-const InputBox = styled.div`
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  background: #ffffff;
-  border: 1px solid #aec1cc;
-  border-radius: 8px;
-  padding: 8px 12px;
-  box-sizing: border-box;
-  box-shadow: inset -0.5px -0.5px 1px 0px rgba(58, 61, 66, 0.2);
-`;
-
-const StyledInput = styled.input`
-  width: 100%;
-  border: none;
-  outline: none;
-  background: transparent;
-  font-family: 'Pretendard', -apple-system, sans-serif;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 1.6;
-  color: #1d1d1d;
-
-  &::placeholder {
-    color: #aec1cc;
-  }
 `;
 
 const InlineButtons = styled.div`
@@ -345,18 +304,13 @@ export function RegisterScheduleModal({ onClose, onCreate }: RegisterScheduleMod
             <VLine />
 
             <RightPane>
-              <FieldGroup>
-                <FieldLabel>일정 이름</FieldLabel>
-                <InputBox>
-                  <StyledInput
-                    type="text"
-                    value={scheduleName}
-                    onChange={(e) => setScheduleName(e.target.value)}
-                    onKeyDown={(e) => e.key === 'Enter' && handleRegister()}
-                    placeholder="이름을 입력하세요..."
-                  />
-                </InputBox>
-              </FieldGroup>
+              <LabeledField
+                label="일정 이름"
+                value={scheduleName}
+                onChange={setScheduleName}
+                onKeyDown={(e) => e.key === 'Enter' && handleRegister()}
+                placeholder="이름을 입력하세요..."
+              />
 
               <InlineButtons>
                 <ActionButton label="취소" onClick={handleClearForm} />
