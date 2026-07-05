@@ -29,6 +29,7 @@ const Backdrop = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 50;
+  zoom: 0.5;
 `;
 
 const Panel = styled.div`
@@ -308,7 +309,9 @@ export function RegisterScheduleModal({ onClose, onCreate }: RegisterScheduleMod
                 label="일정 이름"
                 value={scheduleName}
                 onChange={setScheduleName}
-                onKeyDown={(e) => e.key === 'Enter' && handleRegister()}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && !e.nativeEvent.isComposing) handleRegister();
+                }}
                 placeholder="이름을 입력하세요..."
               />
 
